@@ -1,5 +1,6 @@
 "use client";
 import CategoryList from "@/components/Home/CategoryList";
+import RangeSelect from "@/components/Home/RangeSelect";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -15,9 +16,10 @@ export default function Home() {
   }, [session]);
 
   return (
-    <div className="grid h-screen grid-cols-4">
+    <div className="grid h-screen grid-cols-1 md:grid-cols-4">
       <div className="p-1 md:p-3">
         <CategoryList />
+        <RangeSelect />
       </div>
       <div className="col-span-3 bg-blue-300">second</div>
     </div>

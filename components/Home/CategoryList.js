@@ -8,8 +8,8 @@ function CategoryList() {
 
   return (
     <div>
-      <h2 className="font-bold">Select Food Type</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <h2 className="px-2 font-bold">Select Food Type</h2>
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         {categoryList.map((item, index) => (
           <div
             className={`flex flex-col items-center justify-centent m-2 p-2 bg-gray-100 rounded-lg cursor-pointer grayscale hover:grayscale-0  ${
