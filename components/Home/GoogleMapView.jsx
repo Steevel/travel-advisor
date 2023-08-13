@@ -1,5 +1,5 @@
 import { UserLocationContext } from "@/context/UserLocationContext";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
 import { useContext } from "react";
 
 function GoogleMapView() {
@@ -21,7 +21,18 @@ function GoogleMapView() {
           center={userLocation}
           zoom={10}
           options={{ mapId: "5b0ff1b055f56b31" }}
-        ></GoogleMap>
+        >
+          <MarkerF
+            position={userLocation}
+            icon={{
+              url: "/user-location.png",
+              scaledSize: {
+                width: 50,
+                height: 50,
+              },
+            }}
+          />
+        </GoogleMap>
       </LoadScript>
     </div>
   );
