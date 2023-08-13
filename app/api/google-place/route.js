@@ -34,7 +34,3 @@ export async function GET(request) {
 
   return NextResponse.json({ product });
 }
-
-// https://maps.googleapis.com/maps/api/place/textsearch/json?query=indian&location=13.3318,74.7454&radius=1000&key=AIzaSyAXKzc6lKtOEpZgYsYFrT-lYSCrHrKoYik
-
-// http://localhost:3000/api/google-place?category=indian&radius=1000&lat=13.3318,lng=74.7454

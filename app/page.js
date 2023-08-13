@@ -1,4 +1,5 @@
 "use client";
+import BusinessList from "@/components/Home/BusinessList";
 import CategoryList from "@/components/Home/CategoryList";
 import GoogleMapView from "@/components/Home/GoogleMapView";
 import RangeSelect from "@/components/Home/RangeSelect";
@@ -49,6 +50,9 @@ export default function Home() {
       </div>
       <div className="col-span-3">
         <GoogleMapView />
+        <div className="relative md:absolute w-[100%] md:w-[75%] md:bottom-3 mx-2">
+          <BusinessList businessList={businessList} />
+        </div>
       </div>
     </div>
   );

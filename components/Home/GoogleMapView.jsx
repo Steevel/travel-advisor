@@ -7,7 +7,7 @@ function GoogleMapView() {
 
   const mapContainerStyle = {
     width: "100%",
-    height: "90vh",
+    height: "70vh",
   };
 
   return (
