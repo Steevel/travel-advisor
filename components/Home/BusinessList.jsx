@@ -1,8 +1,12 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import BusinessItem from "./BusinessItem";
+import { SelectedBusinessContext } from "@/context/SelectedBusinessContext";
 
 function BusinessList({ businessList }) {
   const elementRef = useRef(null);
+  const { selectedBusiness, setSelectedBusiness } = useContext(
+    SelectedBusinessContext
+  );
 
   const slideRight = (element) => {
     element.scrollLeft += 500;
@@ -18,10 +22,10 @@ function BusinessList({ businessList }) {
         fill="none"
         viewBox="0 0 24 24"
         onClick={() => slideLeft(elementRef.current)}
-        strokeWidth={1.5}
+        strokeWidth={2.5}
         stroke="currentColor"
-        className="w-8 h-8 absolute rotate-180 top-[35%]
-            bg-gray-300 cursor-pointer p-1 rounded-full text-white"
+        className="z-50 w-8 h-8 absolute rotate-180 top-[35%]
+            bg-purple-400  cursor-pointer p-1 rounded-full text-white"
       >
         <path
           strokeLinecap="round"
@@ -34,7 +38,9 @@ function BusinessList({ businessList }) {
         ref={elementRef}
       >
         {businessList.map((item, index) => (
-          <BusinessItem business={item} key={index} />
+          <div key={index} onClick={() => setSelectedBusiness(item)}>
+            <BusinessItem business={item} />
+          </div>
         ))}
       </div>
       <svg
@@ -42,7 +48,7 @@ function BusinessList({ businessList }) {
         onClick={() => slideRight(elementRef.current)}
         fill="none"
         viewBox="0 0 24 24"
-        strokeWidth={1.5}
+        strokeWidth={2.5}
         stroke="currentColor"
         className="w-8 h-8 absolute right-0 top-[35%]
             bg-gray-300 cursor-pointer p-1 rounded-full text-white"

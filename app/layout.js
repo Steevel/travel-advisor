@@ -5,6 +5,7 @@ import "./globals.css";
 import { Raleway } from "next/font/google";
 import { useEffect, useState } from "react";
 import { UserLocationContext } from "@/context/UserLocationContext";
+import { SelectedBusinessContext } from "@/context/SelectedBusinessContext";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -14,11 +15,12 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const [userLocation, setUserLocation] = useState();
+  const [userLocation, setUserLocation] = useState([]);
+  const [selectedBusiness, setSelectedBusiness] = useState([]);
 
   const getUserLocation = () => {
     navigator.geolocation.getCurrentPosition(function (pos) {
-      console.log(pos);
+      // console.log(pos);
       setUserLocation({
         lat: pos.coords.latitude,
         lng: pos.coords.longitude,
@@ -37,8 +39,12 @@ export default function RootLayout({ children }) {
           <UserLocationContext.Provider
             value={{ userLocation, setUserLocation }}
           >
-            <Navbar />
-            {children}
+            <SelectedBusinessContext.Provider
+              value={{ selectedBusiness, setSelectedBusiness }}
+            >
+              <Navbar />
+              {children}
+            </SelectedBusinessContext.Provider>
           </UserLocationContext.Provider>
         </Provider>
       </body>

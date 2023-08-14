@@ -15,6 +15,7 @@ export default function Home() {
   const [category, setCategory] = useState();
   const [radius, setRadius] = useState(2500);
   const [businessList, setBuissnessList] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { userLocation, setUserLocation } = useContext(UserLocationContext);
 
   const router = useRouter();
@@ -26,15 +27,19 @@ export default function Home() {
   }, [session]);
 
   const getGooglePlaces = () => {
-    GlobalApi.getGooglePlace(
-      category,
-      radius,
-      userLocation?.lat,
-      userLocation?.lng
-    ).then((res) => {
-      console.log(res.data.product.results);
-      setBuissnessList(res.data.product.results);
-    });
+    if (category) {
+      setLoading(true);
+      GlobalApi.getGooglePlace(
+        category,
+        radius,
+        userLocation?.lat,
+        userLocation?.lng
+      ).then((res) => {
+        // console.log(res.data.product.results);
+        setBuissnessList(res.data.product.results);
+        setLoading(false);
+      });
+    }
   };
 
   useEffect(() => {
@@ -49,9 +54,9 @@ export default function Home() {
         <SelectRating />
       </div>
       <div className="col-span-3">
-        <GoogleMapView />
+        <GoogleMapView businessList={businessList} />
         <div className="relative md:absolute w-[100%] md:w-[75%] md:bottom-3 mx-2">
-          <BusinessList businessList={businessList} />
+          {!loading ? <BusinessList businessList={businessList} /> : null}
         </div>
       </div>
     </div>
