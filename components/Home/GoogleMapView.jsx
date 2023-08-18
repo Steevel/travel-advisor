@@ -20,7 +20,7 @@ function GoogleMapView({ businessList }) {
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           center={userLocation}
-          zoom={10}
+          zoom={15}
           options={{ mapId: "5b0ff1b055f56b31" }}
         >
           <MarkerF

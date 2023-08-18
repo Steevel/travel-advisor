@@ -1,10 +1,18 @@
 "use client";
 
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 function Navbar() {
   const { data: session } = useSession();
+  const [profileClick, setProfileClick] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setProfileClick(false);
+    }, 6000);
+  }, [profileClick == true]);
 
   return (
     <div className="flex items-center justify-between p-4">
@@ -36,13 +44,27 @@ function Navbar() {
       </div>
       <div className="">
         {session?.user ? (
-          <Image
-            src={session.user?.image}
-            alt="user"
-            width={40}
-            height={40}
-            className="rounded-full"
-          />
+          <>
+            <Image
+              src={session.user?.image}
+              alt="user"
+              width={40}
+              height={40}
+              onClick={() => setProfileClick(!profileClick)}
+              className="rounded-full cursor-pointer 
+              hover:border-[2px] border-blue-500"
+            />
+            {profileClick ? (
+              <div className="absolute bg-white p-3 shadow-md border-[1px] mt-2 z-30 right-4">
+                <h2
+                  className="cursor-pointer hover:text-blue-500 hover:font-bold"
+                  onClick={() => signOut()}
+                >
+                  Logout
+                </h2>
+              </div>
+            ) : null}
+          </>
         ) : null}
       </div>
     </div>

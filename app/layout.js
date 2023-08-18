@@ -34,7 +34,9 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={raleway.className}>
+      <body
+        className={`${raleway.className} md:overflow-x-hidden md:overflow-y-hidden`}
+      >
         <Provider>
           <UserLocationContext.Provider
             value={{ userLocation, setUserLocation }}

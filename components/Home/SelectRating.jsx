@@ -1,7 +1,7 @@
 import Data from "@/shared/Data";
 import { useState } from "react";
 
-function SelectRating() {
+function SelectRating({ onRatingChange }) {
   const [selectedRating, setSelectedRating] = useState([]);
 
   function onSelectRating(isChecked, value) {
@@ -10,7 +10,8 @@ function SelectRating() {
     } else {
       setSelectedRating(selectedRating.filter((item) => item !== value));
     }
-    console.log(selectedRating);
+    // console.log(selectedRating);
+    onRatingChange(selectedRating);
   }
 
   return (

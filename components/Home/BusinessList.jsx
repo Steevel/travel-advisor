@@ -4,9 +4,7 @@ import { SelectedBusinessContext } from "@/context/SelectedBusinessContext";
 
 function BusinessList({ businessList }) {
   const elementRef = useRef(null);
-  const { selectedBusiness, setSelectedBusiness } = useContext(
-    SelectedBusinessContext
-  );
+  const { setSelectedBusiness } = useContext(SelectedBusinessContext);
 
   const slideRight = (element) => {
     element.scrollLeft += 500;
