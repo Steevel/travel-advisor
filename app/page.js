@@ -7,7 +7,7 @@ import SelectRating from "@/components/Home/SelectRating";
 import SkeltonLoading from "@/components/SkeltonLoading";
 import { UserLocationContext } from "@/context/UserLocationContext";
 import GlobalApi from "@/shared/GlobalApi";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 

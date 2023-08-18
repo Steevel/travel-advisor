@@ -49,7 +49,7 @@ function BusinessList({ businessList }) {
         strokeWidth={2.5}
         stroke="currentColor"
         className="w-8 h-8 absolute right-0 top-[35%]
-            bg-gray-300 cursor-pointer p-1 rounded-full text-white"
+        bg-purple-400 cursor-pointer p-1 rounded-full text-white"
       >
         <path
           strokeLinecap="round"
